@@ -12,8 +12,6 @@
 
 SRCS = push_swap.c instruction.c 
 
-INCLUDES = libft/
-
 NAME = push_swap
 
 GCC = gcc
@@ -22,12 +20,15 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
+libft = libft/libft.a
+
 OBJS = $(SRCS:.c=.o)
 
 all	: $(NAME)
+		make -C $(libft) all
 
 .c.o	:
-	$(GCC) -I. -I $(INCLUDES) -o $@ -c $? $(CFLAGS)
+	$(GCC) -I. -I $(libft) -o $@ -c $? $(CFLAGS)
 
 $(NAME)	: $(OBJS)
 	$(GCC) $(OBJS) -o $(NAME)

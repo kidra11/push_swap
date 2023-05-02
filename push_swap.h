@@ -21,8 +21,8 @@
 
 typedef struct	s_stack
 {
-	int		*stack;
-	int		size;
+	int		nb;
+	struct s_stack	*next;
 }				t_stack;
 
 void	sa(t_stack *a);

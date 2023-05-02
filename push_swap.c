@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void creat_list(t_stack **a, char **argv, int argc)
+void creat_array(t_stack **a, char **argv, int argc)
 {
 	int i;
 
@@ -25,17 +25,24 @@ void creat_list(t_stack **a, char **argv, int argc)
 	}
 }
 
-void print_stack(int *stack, int size)
+void print_stack(t_stack *stack, int size)
 {
-    for (int i = 0; i < size; i++)
-        printf("%d ", stack[i]);
-    printf("\n");
+	int	i;
+
+	i = 0;
+    while(i < size)
+	{
+        printf("%d ", stack->nb);
+		stack = stack->next;
+		i++;
+	}
+	printf("\n");
 }
 
 int main(int argc, char **argv)
 {
-    int *a;
-    int *b;
+    t_stack	*a;
+    t_stack	*b;
     int size;
 
     if (argc < 2)
@@ -45,19 +52,19 @@ int main(int argc, char **argv)
     }
 
     size = argc - 1;
-    a = malloc(size * sizeof(int));
-    b = malloc(size * sizeof(int));
-    for (int i = 1; i < argc; i++)
-        a[i - 1] = ft_atoi(argv[i]);
+	a = malloc(sizeof(t_stack));
+	b = malloc(sizeof(t_stack));
+
+	creat_array(&a, argv, argc);
 
     // Affiche la pile initiale
     printf("Pile a : ");
     print_stack(a, size);
 
     // Effectue chaque opération une par une pour tester
-    sa(a);
-    printf("Pile après sa : ");
-    print_stack(a, size);
+    // sa(a);
+    // printf("Pile après sa : ");
+    // print_stack(a, size);
 
     /*pb(a, b, &size);
     printf("Pile a après pb : ");
