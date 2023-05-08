@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/01 10:54:48 by nsion            ###   ########.fr       */
+/*   Updated: 2023/05/08 14:07:16 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,32 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-void	sa(t_stack *a);
+void	sa(t_stack **a);
 
-void	sb(t_stack *b);
+void	sb(t_stack **b);
 
-void	ss(t_stack *a, t_stack *b);
+void	ss(t_stack **a, t_stack **b);
 
-void	pa(t_stack *a, t_stack *b);
+void	pa(t_stack **a, t_stack **b);
 
-void	pb(t_stack *a, t_stack *b);
+void	pb(t_stack **a, t_stack **b);
 
-void	ra(t_stack *a);
+void	ra(t_stack **a);
 
-void	rb(t_stack *b);
+void	rb(t_stack **b);
 
-void	rr(t_stack *a, t_stack *b);
+void	rr(t_stack **a, t_stack **b);
 
-void	rra(t_stack *a);
+void	rra(t_stack **a);
 
-void	rrb(t_stack *b);
+void	rrb(t_stack **b);
 
-void	rrr(t_stack *a, t_stack *b);
+void	rrr(t_stack **a, t_stack **b);
+
+void	ps_lstadd_back(t_stack **lst, t_stack *new);
+
+t_stack	*ps_lstnew(int content);
+
+int	ps_atoi(const char *nptr);
 
 #endif

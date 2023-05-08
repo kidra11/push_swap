@@ -3,46 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   instruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 11:07:07 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/01 11:07:11 by nsion            ###   ########.fr       */
+/*   Updated: 2023/05/08 14:08:36 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack *a)
+void	sa(t_stack **a)
 {
-	int		tmp;
+	int tmp;
 
-	if (a->size > 1)
-	{
-		tmp = a->stack[0];
-		a->stack[0] = a->stack[1];
-		a->stack[1] = tmp;
-	}
+	if (!*a || !(*a)->next)
+		return 	;
+	tmp = (*a)->nb;
+	(*a)->nb = (*a)->next->nb;
+	(*a)->next->nb = tmp; 
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack **b)
 {
-	int		tmp;
+	int	tmp;
 
-	if (b->size > 1)
-	{
-		tmp = b->stack[0];
-		b->stack[0] = b->stack[1];
-		b->stack[1] = tmp;
-	}
+	if (!*b || !(*b)->next)
+		return 	;
+	tmp = (*b)->nb;
+	(*b)->nb = (*b)->next->nb;
+	(*b)->next->nb = tmp; 
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack **a, t_stack **b)
 {
 	sa(a);
 	sb(b);
 }
-
-void	pa(t_stack *a, t_stack *b)
+/*
+void	pa(t_stack **a, t_stack **b)
 {
 	int		tmp;
 	int		i;
@@ -68,7 +66,7 @@ void	pa(t_stack *a, t_stack *b)
 	}
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_stack **a, t_stack **b)
 {
 	int		tmp;
 	int		i;
@@ -94,7 +92,7 @@ void	pb(t_stack *a, t_stack *b)
 	}
 }
 
-void	ra(t_stack *a)
+void	ra(t_stack **a)
 {
 	int		tmp;
 	int		i;
@@ -112,7 +110,7 @@ void	ra(t_stack *a)
 	}
 }
 
-void	rb(t_stack *b)
+void	rb(t_stack **b)
 {
 	int		tmp;
 	int		i;
@@ -130,13 +128,13 @@ void	rb(t_stack *b)
 	}
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rr(t_stack **a, t_stack **b)
 {
 	ra(a);
 	rb(b);
 }
 
-void	rra(t_stack *a)
+void	rra(t_stack **a)
 {
 	int		tmp;
 	int		i;
@@ -154,7 +152,7 @@ void	rra(t_stack *a)
 	}
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_stack **b)
 {
 	int		tmp;
 	int		i;
@@ -172,8 +170,8 @@ void	rrb(t_stack *b)
 	}
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack **a, t_stack **b)
 {
 	rra(a);
 	rrb(b);
-}
+}*/
