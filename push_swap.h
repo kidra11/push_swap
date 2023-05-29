@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/08 14:07:16 by nsion            ###   ########.fr       */
+/*   Updated: 2023/05/29 18:18:44 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,17 @@ void	rrb(t_stack **b);
 
 void	rrr(t_stack **a, t_stack **b);
 
+// mini_lib.c
 void	ps_lstadd_back(t_stack **lst, t_stack *new);
+
+void	ps_lstadd_front(t_stack **lst, t_stack *new);
 
 t_stack	*ps_lstnew(int content);
 
 int	ps_atoi(const char *nptr);
+
+void	ps_lstclear(t_stack **lst);
+
+t_stack	*ps_lstlast(t_stack *lst);
 
 #endif

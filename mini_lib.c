@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:33:33 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/05 16:52:48 by nsion            ###   ########.fr       */
+/*   Updated: 2023/05/29 18:14:58 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ void	ps_lstadd_back(t_stack **lst, t_stack *new)
 	while (temp->next != 0)
 		temp = temp->next;
 	temp->next = new;
+}
+
+void	ps_lstadd_front(t_stack **lst, t_stack *new)
+{
+	if (!lst)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 
 t_stack	*ps_lstnew(int content)
@@ -66,4 +74,26 @@ int	ps_atoi(const char *nptr)
 	return (nb * k);
 }
 
+void	ps_lstclear(t_stack **lst)
+{
+	t_stack	*tmp;
+
+	if (!(*lst))
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free((*lst));
+		(*lst) = tmp;
+	}
+}
+
+t_stack	*ps_lstlast(t_stack *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != 0)
+		lst = lst->next;
+	return (lst);
+}
 

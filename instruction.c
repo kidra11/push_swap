@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 11:07:07 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/08 14:08:36 by nsion            ###   ########.fr       */
+/*   Updated: 2023/05/29 18:26:20 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,78 +39,44 @@ void	ss(t_stack **a, t_stack **b)
 	sa(a);
 	sb(b);
 }
-/*
+
 void	pa(t_stack **a, t_stack **b)
 {
-	int		tmp;
-	int		i;
+	t_stack	*tmp;
 
-	if (b->size > 0)
-	{
-		tmp = b->stack[0];
-		i = 0;
-		while (i < b->size - 1)
-		{
-			b->stack[i] = b->stack[i + 1];
-			i++;
-		}
-		b->size--;
-		i = a->size;
-		while (i > 0)
-		{
-			a->stack[i] = a->stack[i - 1];
-			i--;
-		}
-		a->stack[0] = tmp;
-		a->size++;
-	}
+	if (!*b)
+		return ;
+	ps_lstadd_front(a, ps_lstnew((*b)->nb));
+	tmp = (*b);
+	(*b) = (*b)->next;
+	free(tmp);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	int		tmp;
-	int		i;
+	t_stack		*tmp;
 
-	if (a->size > 0)
-	{
-		tmp = a->stack[0];
-		i = 0;
-		while (i < a->size - 1)
-		{
-			a->stack[i] = a->stack[i + 1];
-			i++;
-		}
-		a->size--;
-		i = b->size;
-		while (i > 0)
-		{
-			b->stack[i] = b->stack[i - 1];
-			i--;
-		}
-		b->stack[0] = tmp;
-		b->size++;
-	}
+	if (!*a)
+		return ;
+	ps_lstadd_front(b, ps_lstnew((*a)->nb));
+	tmp = (*a);
+	(*a) = (*a)->next;
+	free(tmp);
 }
 
 void	ra(t_stack **a)
 {
-	int		tmp;
-	int		i;
-
-	if (a->size > 1)
-	{
-		tmp = a->stack[0];
-		i = 0;
-		while (i < a->size - 1)
-		{
-			a->stack[i] = a->stack[i + 1];
-			i++;
-		}
-		a->stack[a->size - 1] = tmp;
-	}
+	t_stack		*tmp;
+	
+	if (!a)
+		return ;
+	tmp = (*a);
+	ps_lstlast(a);
+	
+	free(tmp);
 }
 
-void	rb(t_stack **b)
+/* void	rb(t_stack **b)
 {
 	int		tmp;
 	int		i;

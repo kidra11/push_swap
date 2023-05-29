@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/08 14:18:28 by nsion            ###   ########.fr       */
+/*   Updated: 2023/05/29 18:21:04 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,24 @@ int main(int argc, char **argv)
 	// a = malloc(sizeof(t_stack));
 	// b = malloc(sizeof(t_stack));
 
-	creat_array(&b, argv, argc);
+	creat_array(&a, argv, argc);
 
-    // Affiche la pile initiale
-	printf("Pile b : ");
+	ps_lstadd_back(&b, ps_lstnew(90));
+	printf("Piles b : ");
 	print_stack(b);
+    // Affiche la pile initiale
+	printf("Pile a : ");
+	print_stack(a);
 
     // Effectue chaque opération une par une pour tester
-     sb(&b);
-     printf("Pile après sb : ");
-     print_stack(b);
+    ra(&a);
+    printf("Pile après ra : ");
+    print_stack(a);
 
-    /*pb(&a, &b, &size);
-    printf("Pile a après pb : ");
-    print_stack(a, size);
-    printf("Pile b après pb : ");
-    print_stack(b, 1);
+	printf("Piles b : ");
+	print_stack(b);
 
-    ra(&a, size);
+    /*ra(&a, size);
     printf("Pile après ra : ");
     print_stack(a, size);
 
@@ -96,7 +96,7 @@ int main(int argc, char **argv)
     printf("Pile b après rrr : ");
     print_stack(b, 1);*/
 
-	free(a);
-	free(b);
+	ps_lstclear(&a);
+	ps_lstclear(&b);
     return 0;
 }
