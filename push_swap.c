@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/29 18:21:04 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/02 19:00:43 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int main(int argc, char **argv)
 	creat_array(&a, argv, argc);
 
 	ps_lstadd_back(&b, ps_lstnew(90));
+	ps_lstadd_back(&b, ps_lstnew(96));
+	ps_lstadd_back(&b, ps_lstnew(69));
+	ps_lstadd_back(&b, ps_lstnew(42));
 	printf("Piles b : ");
 	print_stack(b);
     // Affiche la pile initiale
@@ -61,40 +64,12 @@ int main(int argc, char **argv)
 	print_stack(a);
 
     // Effectue chaque opération une par une pour tester
-    ra(&a);
-    printf("Pile après ra : ");
-    print_stack(a);
+    rrb(&b);
+    printf("Pile après rrb : ");
+    print_stack(b);
 
 	printf("Piles b : ");
 	print_stack(b);
-
-    /*ra(&a, size);
-    printf("Pile après ra : ");
-    print_stack(a, size);
-
-    rb(&b, size);
-    printf("Pile b après rb : ");
-    print_stack(b, 1);
-
-    rr(&a, b, size);
-    printf("Pile a après rr : ");
-    print_stack(a, size);
-    printf("Pile b après rr : ");
-    print_stack(b, 1);
-
-    rra(&a, size);
-    printf("Pile après rra : ");
-    print_stack(a, size);
-
-    rrb(&b, size);
-    printf("Pile b après rrb : ");
-    print_stack(b, 1);
-
-    rrr(&a, &b, size);
-    printf("Pile a après rrr : ");
-    print_stack(a, size);
-    printf("Pile b après rrr : ");
-    print_stack(b, 1);*/
 
 	ps_lstclear(&a);
 	ps_lstclear(&b);
