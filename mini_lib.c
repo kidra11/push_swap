@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:33:33 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/29 18:14:58 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/03 20:24:57 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,3 +97,98 @@ t_stack	*ps_lstlast(t_stack *lst)
 	return (lst);
 }
 
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str)
+		i++;
+	return (i);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*nv;
+	int		i;
+
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	else if (len > ft_strlen(s + start))
+		nv = (char *)malloc(((ft_strlen(s) + 1) - start) * sizeof(char));
+	else
+		nv = (char *) malloc((len + 1) * sizeof(char));
+	i = 0;
+	if (nv == 0)
+		return (NULL);
+	while (len-- > 0 && s[start])
+		nv[i++] = s[start++];
+	nv[i] = '\0';
+	return (nv);
+}
+
+static int	count_word(char const *s, char c)
+{
+	int	k;
+	int	i;
+
+	k = 0;
+	i = 0;
+	while (s[i])
+	{
+		while (c == s[i] && s[i])
+			i++;
+		if (s[i])
+		{
+			k++;
+			while (c != s[i] && s[i])
+				i++;
+		}
+	}
+	return (k);
+}
+
+static int	get_next_word(char const *s, int i, char c)
+{
+	int	t;
+	int	p;
+
+	t = i;
+	p = 0;
+	while (c != s[t] && s[t])
+		t++;
+	p = t - i;
+	if (!p)
+		return (t);
+	return (p);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**str;
+	int		i;
+	int		y;
+
+	i = 0;
+	y = 0;
+	if (!s)
+		return (NULL);
+	str = (char **)malloc((count_word(s, c) + 1) * sizeof(char *));
+	if (str == 0)
+		return (0);
+	while (s[i])
+	{
+		while (c == s[i] && s[i])
+			i++;
+		if (c != s[i] && s[i])
+		{
+			str[y] = ft_substr(s, i, get_next_word(s, i, c));
+			i += get_next_word(s, i, c);
+			y++;
+		}
+	}
+	str[y] = 0;
+	return (str);
+}

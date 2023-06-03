@@ -6,24 +6,22 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/05/29 18:18:44 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/03 20:35:45 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct	s_stack
+typedef struct s_stack
 {
-	int		nb;
+	int				nb;
 	struct s_stack	*next;
-}				t_stack;
+}			t_stack;
 
 void	sa(t_stack **a);
 
@@ -54,10 +52,16 @@ void	ps_lstadd_front(t_stack **lst, t_stack *new);
 
 t_stack	*ps_lstnew(int content);
 
-int	ps_atoi(const char *nptr);
+int		ps_atoi(const char *nptr);
 
 void	ps_lstclear(t_stack **lst);
 
 t_stack	*ps_lstlast(t_stack *lst);
+
+int		ft_strlen(char *str);
+
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+char	**ft_split(char const *s, char c);
 
 #endif
