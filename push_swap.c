@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/03 20:27:28 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/04 11:45:51 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,55 @@ void	print_stack(t_stack *stack)
 	printf("\n");
 }
 
+int	check_dual(int num, char **tab)
+{
+	int	i;
+	int	j;
+
+	if (!num || !tab)
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
+	i = 0;
+	while (i < num)
+	{
+		j = 0;
+		while (j < num)
+		{
+			if (tab[i] == tab[j])
+			{
+				ft_printf("Error: Duplicate detected\n");
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+void	spliting(char **tab)
+{
+	char	**check;
+	int		i;
+
+	check = ft_split(tab[1], ' ');
+	while (tab)
+		i++;
+	//compteur de tableau
+	//si 1 seul nombre return(printf("Error : you must have more then 1 number.\n"));
+	//si plus de 1 nombre 
+	//if(check_dual(compteur tableau, check) == 0)
+	//	return (0);
+	//creat_array(&a, check, nombre de tableau)
+
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	**check;
 
 	if (argc < 2)
 	{
@@ -49,14 +93,13 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	if (argc < 3)
-	{
-		check = ft_split(argv[1], ' ');
-		//compteur de tableau
-		//si 1 seul nombre return(printf("Error : you must have more then 1 number.\n"));
-		//si plus de 1 nombre creat_array(&a, check, nombre de tableau)
-	}
+		spliting(argv);
 	if (argc >= 3)
+	{
+		if (check_dual(argc, argv) == 0)
+			return (0);
 		creat_array(&a, argv, argc);
+	}
 	//remplir un b pour test
 	ps_lstadd_back(&b, ps_lstnew(90));
 	ps_lstadd_back(&b, ps_lstnew(96));
