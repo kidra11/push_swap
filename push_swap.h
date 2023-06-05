@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/03 20:35:45 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/05 09:52:43 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf/libftprintf.h"
+
 
 typedef struct s_stack
 {
@@ -58,7 +60,9 @@ void	ps_lstclear(t_stack **lst);
 
 t_stack	*ps_lstlast(t_stack *lst);
 
-int		ft_strlen(char *str);
+int		ft_strlen(const char *str);
+
+char	*ft_strdup(const char *s);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 

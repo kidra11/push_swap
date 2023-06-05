@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:33:33 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/03 20:24:57 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/05 09:53:31 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_stack	*ps_lstlast(t_stack *lst)
 	return (lst);
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 
@@ -105,6 +105,23 @@ int	ft_strlen(char *str)
 	while (str[i] && str)
 		i++;
 	return (i);
+}
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*l;
+
+	i = 0;
+	l = (char *)malloc(ft_strlen((char *)s) + 1 * sizeof(char));
+	if (l == 0)
+		return (0);
+	while (s[i])
+	{
+		l[i] = s[i];
+		i++;
+	}
+	l[i] = '\0';
+	return (l);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -114,9 +131,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	if ((int)start >= ft_strlen(s))
 		return (ft_strdup(""));
-	else if (len > ft_strlen(s + start))
+	else if ((int)len > ft_strlen(s + start))
 		nv = (char *)malloc(((ft_strlen(s) + 1) - start) * sizeof(char));
 	else
 		nv = (char *) malloc((len + 1) * sizeof(char));
