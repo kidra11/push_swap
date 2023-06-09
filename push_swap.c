@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/05 11:37:09 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/09 14:31:39 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,28 @@ void	print_stack(t_stack *stack)
 	printf("\n");
 }
 
-void	check_dual(int num, char **tab)
+void	check_dual(int num, t_stack *lst)
 {
-	int	i;
-	int	j;
+	t_stack *end;
+	int	check;
 
-	if (!num || !tab)
+	if (!num || !lst)
 	{
-		ft_printf("Error\n");
-		return (0);
+		ft_printf("Error.\n");
+		return ;
 	}
-	i = 0;
-	while (i < num)
+	end = lst;
+	check = lst->nb;
+	while (end->next)
 	{
-		j = i + 1;
-		while (j < num)
+		lst = lst->next;
+		while (lst->next)
 		{
-			ft_printf("2 while\n");
-			ft_printf("%s", tab[i]);
-			ft_printf("%s\n", tab[j]);
-			if (tab[i] == tab[j])
-			{
-				ft_printf("%s", tab[i]);
-				ft_printf("%s\n", tab[j]);
-				exit(ft_printf("Error: Duplicate detected\n"));
-			}
-			j++;
+			if (check == lst->nb)
+				exit(ft_printf("Error: dual number detect.\n"));
+			lst = lst->next;
 		}
-		i++;
+		end = end->next;
 	}
 }
 
@@ -82,11 +76,11 @@ void	spliting(char **tab, t_stack *a, int choice)
 		i--;
 	//ft_printf("tableau : %d\n", i);
 	if (i <= 1)
-		exit(ft_printf("Error : you must have more then 1 number.\n"));
+		exit(ft_printf("Error : you must have more than 1 number.\n"));
 	else
 	{
-		check_dual(i, check);
 		creat_array(&a, check, i);
+		check_dual(i, a);
 	}
 }
 
