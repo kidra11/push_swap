@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:33:33 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/05 09:53:31 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/10 17:58:02 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,17 @@ int	ps_atoi(const char *nptr)
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
+		{
+			if (!ft_isdigit(nptr[i + 1]))
+				exit(ft_printf("Error: no digit.\n"));
 			k *= -1;
+		}
 		i++;
 	}
-	while (nptr[i] >= 48 && nptr[i] <= 57)
-	{
-		nb = nb * 10 + nptr[i] - 48;
-		i++;
-	}
+	while (nptr[i] >= 48 && nptr[i] <= 57 && nptr[i])
+		nb = nb * 10 + nptr[i++] - 48;
+	if (nptr[i])
+		exit(ft_printf("Error: non digit character.\n"));
 	return (nb * k);
 }
 
@@ -208,4 +211,9 @@ char	**ft_split(char const *s, char c)
 	}
 	str[y] = 0;
 	return (str);
+}
+
+int	ft_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
 }

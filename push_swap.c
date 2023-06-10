@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/09 14:31:39 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/10 17:57:23 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	creat_array(t_stack **a, char **argv, int argc)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
+	while (i < argc)
+		ps_atoi(argv[i++]);
+	i = 0;
 	while (i < argc)
 	{
 		ps_lstadd_back(a, ps_lstnew(ps_atoi(argv[i])));
@@ -35,28 +38,30 @@ void	print_stack(t_stack *stack)
 	printf("\n");
 }
 
-void	check_dual(int num, t_stack *lst)
+void	check_dual(t_stack *lst)
 {
 	t_stack *end;
-	int	check;
+	t_stack	*check;
+	t_stack	*tmp;
 
-	if (!num || !lst)
+	if (!lst)
+		exit(ft_printf("Error: list failed to create.\n"));
+	tmp = lst;
+	while (tmp)
 	{
-		ft_printf("Error.\n");
-		return ;
-	}
-	end = lst;
-	check = lst->nb;
-	while (end->next)
-	{
-		lst = lst->next;
-		while (lst->next)
+		check = tmp;
+		end = tmp->next;
+		while (end)
 		{
-			if (check == lst->nb)
+			//	print_stack(lst);
+			if (check->nb == end->nb)
+			{
+				ps_lstclear(&lst);
 				exit(ft_printf("Error: dual number detect.\n"));
-			lst = lst->next;
+			}
+			end = end->next;
 		}
-		end = end->next;
+		tmp = tmp->next;
 	}
 }
 
@@ -67,20 +72,18 @@ void	spliting(char **tab, t_stack *a, int choice)
 
 	i = 0;
 	if (choice == 1)
-		check = ft_split(tab[1], ' ');
+		check = ft_split(tab[0], ' ');
 	if (choice == 2)
 		check = tab;
 	while (check[i])
 		i++;
-	if (choice == 2)
-		i--;
 	//ft_printf("tableau : %d\n", i);
 	if (i <= 1)
 		exit(ft_printf("Error : you must have more than 1 number.\n"));
 	else
 	{
 		creat_array(&a, check, i);
-		check_dual(i, a);
+		check_dual(a);
 	}
 }
 
@@ -97,9 +100,9 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	if (argc < 3)
-		spliting(argv, a, 1);
+		spliting(argv + 1, a, 1);
 	if (argc >= 3)
-		spliting(argv, a, 2);
+		spliting(argv + 1, a, 2);
 	//remplir un b pour test
 	ps_lstadd_back(&b, ps_lstnew(90));
 	ps_lstadd_back(&b, ps_lstnew(96));
