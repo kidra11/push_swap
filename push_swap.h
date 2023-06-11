@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 13:54:59 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 15:28:18 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ typedef struct s_stack
 	int				nb;
 	struct s_stack	*next;
 }			t_stack;
+
+typedef struct s_data
+{
+	int	median;
+	int	size;
+	int	start;
+	int	end;
+	int	n;
+	int	t_num;
+	int	unorder_num;
+	int	max;
+}		t_data;
 
 //instruction
 void	sa(t_stack **a);

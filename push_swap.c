@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 14:12:25 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 15:22:46 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,22 +101,6 @@ int	main(int argc, char **argv)
 		spliting(argv + 1, a, 1);
 	if (argc >= 3)
 		spliting(argv + 1, a, 2);
-	//remplir un b pour test
-	ps_lstadd_back(&b, ps_lstnew(90));
-	ps_lstadd_back(&b, ps_lstnew(96));
-	ps_lstadd_back(&b, ps_lstnew(69));
-	ps_lstadd_back(&b, ps_lstnew(42));
-	//printf("Piles b : ");
-	//print_stack(b);
-	// Affiche la pile initiale
-	//printf("Pile a : ");
-	//print_stack(a);
-	// Effectue chaque opération une par une pour tester
-	//rrb(&b);
-	//printf("Pile après rrb : ");
-	//print_stack(b);
-	//printf("Piles b : ");
-	//print_stack(b);
 	ps_lstclear(&a);
 	ps_lstclear(&b);
 	return (0);
