@@ -6,11 +6,24 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:47:17 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 13:47:50 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 15:45:22 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_lstsize(t_stack *src)
+{
+	int	i;
+
+	i = 0;
+	while (src)
+	{
+		src = src->next;
+		i++;
+	}
+	return (i);
+}
 
 static int	count_word(char const *s, char c)
 {

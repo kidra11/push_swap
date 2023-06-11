@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 15:28:18 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 15:55:21 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
 
 int		ft_isdigit(char c);
+
+int		ft_lstsize(t_stack *src);
+
+void	bubble_sort(int *arr, int arr_len);
+
+void	sort(t_stack **a, t_stack **b, int *array, t_data *data);
 
 #endif

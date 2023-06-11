@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 15:22:46 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 15:54:52 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,6 @@ void	creat_array(t_stack **a, char **argv, int argc)
 		ps_lstadd_back(a, ps_lstnew(ps_atoi(argv[i])));
 		i++;
 	}
-}
-
-void	print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		printf("%d ", stack->nb);
-		stack = stack->next;
-	}
-	printf("\n");
 }
 
 void	check_dual(t_stack *lst)
@@ -85,10 +75,29 @@ void	spliting(char **tab, t_stack *a, int choice)
 	}
 }
 
+int	*sort_array(t_stack *lst)
+{
+	size_t	i;
+	int		*arr;
+
+	i = 0;
+	arr = (int *)malloc(sizeof(int) * (ft_lstsize(lst)));
+	while (lst)
+	{
+		arr[i] = lst->nb;
+		lst = lst->next;
+		i++;
+	}
+	bubble_sort(arr, i);
+	return (arr);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	t_data	data;
+	int		*array;
 
 	if (argc < 2)
 	{
@@ -101,7 +110,10 @@ int	main(int argc, char **argv)
 		spliting(argv + 1, a, 1);
 	if (argc >= 3)
 		spliting(argv + 1, a, 2);
+	array = sort_array(a);
+	sort(&a, &b, array, &data);
 	ps_lstclear(&a);
 	ps_lstclear(&b);
+	free(array);
 	return (0);
 }
