@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:33:33 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/10 17:58:02 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 13:15:52 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ t_stack	*ps_lstnew(int content)
 
 int	ps_atoi(const char *nptr)
 {
-	size_t	i;
-	size_t	k;
-	size_t	nb;
+	size_t		i;
+	int			k;
+	long long	nb;
 
 	i = 0;
 	nb = 0;
@@ -62,18 +62,19 @@ int	ps_atoi(const char *nptr)
 		i++;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (nptr[i] == '-')
+		if (nptr[i++] == '-')
 		{
-			if (!ft_isdigit(nptr[i + 1]))
+			if (!ft_isdigit(nptr[i]))
 				exit(ft_printf("Error: no digit.\n"));
 			k *= -1;
 		}
-		i++;
 	}
 	while (nptr[i] >= 48 && nptr[i] <= 57 && nptr[i])
 		nb = nb * 10 + nptr[i++] - 48;
 	if (nptr[i])
 		exit(ft_printf("Error: non digit character.\n"));
+	if ((nb * k) > 2147483647 || (nb * k) < -2147483648)
+		exit(ft_printf("Error: out of limits.\n"));
 	return (nb * k);
 }
 
