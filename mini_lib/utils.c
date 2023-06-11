@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:55:26 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 13:56:02 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 14:06:47 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ps_atoi(const char *nptr)
 	}
 	while (nptr[i] >= 48 && nptr[i] <= 57 && nptr[i])
 		nb = nb * 10 + nptr[i++] - 48;
-	if (nptr[i])
+	if (nptr[i] || nptr[i - 1] == '+')
 		exit(ft_printf("Error: non digit character.\n"));
 	if ((nb * k) > 2147483647 || (nb * k) < -2147483648)
 		exit(ft_printf("Error: out of limits.\n"));

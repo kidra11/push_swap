@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 13:25:13 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 14:12:25 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	check_dual(t_stack *lst)
 		end = tmp->next;
 		while (end)
 		{
-			//	print_stack(lst);
 			if (check->nb == end->nb)
 			{
 				ps_lstclear(&lst);
@@ -77,9 +76,8 @@ void	spliting(char **tab, t_stack *a, int choice)
 		check = tab;
 	while (check[i])
 		i++;
-	//ft_printf("tableau : %d\n", i);
 	if (i <= 1)
-		exit(ft_printf("Error : you must have more than 1 number.\n"));
+		exit (0);
 	else
 	{
 		creat_array(&a, check, i);
