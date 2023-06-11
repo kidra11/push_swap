@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/10 17:55:01 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 13:54:59 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # include <unistd.h>
 # include "ft_printf/libftprintf.h"
 
-
 typedef struct s_stack
 {
 	int				nb;
 	struct s_stack	*next;
 }			t_stack;
 
+//instruction
 void	sa(t_stack **a);
 
 void	sb(t_stack **b);

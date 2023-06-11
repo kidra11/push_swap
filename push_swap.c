@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 13:17:57 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/11 13:25:13 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print_stack(t_stack *stack)
 
 void	check_dual(t_stack *lst)
 {
-	t_stack *end;
+	t_stack	*end;
 	t_stack	*check;
 	t_stack	*tmp;
 
