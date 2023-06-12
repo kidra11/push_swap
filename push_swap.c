@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 15:54:52 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/12 21:07:14 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_dual(t_stack *lst)
 	}
 }
 
-void	spliting(char **tab, t_stack *a, int choice)
+void	spliting(char **tab, t_stack **a, int choice)
 {
 	char	**check;
 	int		i;
@@ -70,8 +70,13 @@ void	spliting(char **tab, t_stack *a, int choice)
 		exit (0);
 	else
 	{
-		creat_array(&a, check, i);
-		check_dual(a);
+		creat_array(a, check, i);
+		check_dual(*a);
+		if (is_sorted(*a) == 0)
+		{
+			ps_lstclear(a);
+			exit(0);
+		}
 	}
 }
 
@@ -107,9 +112,9 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	if (argc < 3)
-		spliting(argv + 1, a, 1);
+		spliting(argv + 1, &a, 1);
 	if (argc >= 3)
-		spliting(argv + 1, a, 2);
+		spliting(argv + 1, &a, 2);
 	array = sort_array(a);
 	sort(&a, &b, array, &data);
 	ps_lstclear(&a);

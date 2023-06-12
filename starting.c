@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:46:15 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 15:54:47 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/12 21:13:05 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,17 @@ void	five(t_stack **a, t_stack **b)
 		pa(a, b);
 }
 
+int	is_sorted(t_stack *a)
+{
+	while (a)
+	{
+		if (a->next && a->nb > a->next->nb)
+			return (1);
+		a = a->next;
+	}
+	return (0);
+}
+
 void	sort(t_stack **a, t_stack **b, int *array, t_data *data)
 {
 	if (ft_lstsize(*a) <= 3)
@@ -86,4 +97,3 @@ void	sort(t_stack **a, t_stack **b, int *array, t_data *data)
 		from_b_to_a(a, b, array, data);
 	}
 }
-

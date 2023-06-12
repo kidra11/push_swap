@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 10:54:45 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 15:55:21 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/12 21:16:06 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,34 @@ int		ft_isdigit(char c);
 
 int		ft_lstsize(t_stack *src);
 
+//algo_utils
 void	bubble_sort(int *arr, int arr_len);
+
+int		find_big_num(t_stack *lst);
+
+int		find_small_num(t_stack *lst_a);
+
+int		find_after_smallnum(t_stack *lst_a);
+
+int		find_big_num_index(t_stack *lst, int max);
+
+//algo
+void	from_a_to_b(t_stack **a, t_stack **b, int *array, t_data *data);
+
+void	from_b_to_a(t_stack **a, t_stack **b, int *array, t_data *data);
+
+void	check_cases(t_stack **a, t_stack **b, int *array, t_data *data);
+
+void	check_case2(t_stack **a, t_data *data);
+
+void	not_max_num(t_stack **a, t_stack **b, t_data *data);
+
+//starting
+void	three(t_stack **a);
+
+void	five(t_stack **a, t_stack **b);
+
+int		is_sorted(t_stack *a);
 
 void	sort(t_stack **a, t_stack **b, int *array, t_data *data);
 

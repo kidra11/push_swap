@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:24:20 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 15:55:15 by nsion            ###   ########.fr       */
+/*   Updated: 2023/06/12 21:15:43 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ void	from_a_to_b(t_stack **a, t_stack **b, int *array, t_data *data)
 	while (*a)
 	{
 		if (ft_lstsize(*a) == 1)
-			push(a, b, 'b');
+			pb(a, b);
 		while (ft_lstsize(*b) < data->end - data->start)
 		{
-			if (!((*a)->nb < array[data->end] && (*a)->nb >= array[data->start]))
-				rotate(a, 'a');
+			if (!((*a)->nb < array[data->end]
+					&& (*a)->nb >= array[data->start]))
+				ra(a);
 			else
 			{
-				push(a, b, 'b');
+				pa(a, b);
 				if ((*b)->nb < array[data->median])
-					rotate(b, 'b');
+					rb(b);
 			}
 		}
 		data->start -= data->size;
@@ -51,7 +52,7 @@ void	from_b_to_a(t_stack **a, t_stack **b, int *array, t_data *data)
 	}
 	while (data->unorder_num != 0)
 	{
-		reverse_rotate(a, 'a');
+		rra(a);
 		data->unorder_num--;
 	}
 }
@@ -60,16 +61,16 @@ void	check_cases(t_stack **a, t_stack **b, int *array, t_data *data)
 {
 	if ((*b)->nb == array[data->max])
 	{
-		push(b, a, 'a');
+		pa(a, b);
 		data->max--;
 		if ((*a)->next && (*a)->nb > (*a)->next->nb)
 		{
-			swap(*a, 'a');
+			sa(a);
 			data->max--;
 		}
 	}
 	else if ((*b)->nb == array[data->max - 1])
-		push(b, a, 'a');
+		pa(a, b);
 	else
 		not_max_num(a, b, data);
 }
@@ -78,7 +79,7 @@ void	check_case2(t_stack **a, t_data *data)
 {
 	if (data->unorder_num > 0)
 	{
-		reverse_rotate(a, 'a');
+		rra(a);
 		data->unorder_num--;
 		data->max--;
 	}
@@ -88,15 +89,15 @@ void	not_max_num(t_stack **a, t_stack **b, t_data *data)
 {
 	if (data->unorder_num == 0 || (*b)->nb > ps_lstlast(*a)->nb)
 	{
-		push(b, a, 'a');
-		rotate(a, 'a');
+		pa(a, b);
+		ra(a);
 		data->unorder_num++;
 	}
 	else
 	{
 		if (find_big_num_index(*b, find_big_num(*b)) < ft_lstsize(*b) / 2)
-			rotate(b, 'b');
+			rb(b);
 		else
-			reverse_rotate(b, 'b');
+			rrb(b);
 	}
 }
