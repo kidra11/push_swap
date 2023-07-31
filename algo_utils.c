@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:38:09 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/12 21:12:52 by nsion            ###   ########.fr       */
+/*   Updated: 2023/07/31 10:25:52 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	bubble_sort(int *arr, int arr_len)
 	{
 		j = 0;
 		while (j < arr_len)
-		{	
+		{
 			if ((j + 1 < arr_len) && arr[j] > arr[j + 1])
 			{
 				temp = arr[j];

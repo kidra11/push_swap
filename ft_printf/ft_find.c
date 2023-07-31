@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsion <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:29:11 by nsion             #+#    #+#             */
-/*   Updated: 2023/02/27 16:21:41 by nsion            ###   ########.fr       */
+/*   Updated: 2023/07/31 10:26:46 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,4 @@ int	for_p(unsigned long long int *n, char *base, int num)
 	while (--i >= 0)
 		num += ft_putchar(base[n_final[i]]);
 	return (num);
-}	
+}

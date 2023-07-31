@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:37:59 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 13:54:06 by nsion            ###   ########.fr       */
+/*   Updated: 2023/07/31 13:17:36 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rra(t_stack **a)
 	t_stack	*end;
 	t_stack	*tmp;
 
-	if (!a || !(*a)->nb)
+	if (!a || !(*a)->next)
 		return ;
 	tmp = (*a);
 	end = ps_lstlast(*a);
@@ -34,7 +34,7 @@ void	rrb(t_stack **b)
 	t_stack	*end;
 	t_stack	*tmp;
 
-	if (!b || !(*b)->nb)
+	if (!b || !(*b)->next)
 		return ;
 	tmp = (*b);
 	end = ps_lstlast(*b);

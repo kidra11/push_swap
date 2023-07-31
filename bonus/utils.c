@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 10:52:52 by nsion             #+#    #+#             */
-/*   Updated: 2023/07/31 13:20:36 by nsion            ###   ########.fr       */
+/*   Created: 2023/07/31 11:00:51 by nsion             #+#    #+#             */
+/*   Updated: 2023/07/31 13:25:58 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../push_swap.h"
 
 void	creat_array(t_stack **a, char **argv, int argc)
 {
@@ -95,30 +94,4 @@ int	*sort_array(t_stack *lst)
 	}
 	bubble_sort(arr, i);
 	return (arr);
-}
-
-int	main(int argc, char **argv)
-{
-	t_stack	*a;
-	t_stack	*b;
-	t_data	data;
-	int		*array;
-
-	if (argc < 2)
-	{
-		printf("Usage: ./push_swap [list of integers]\n");
-		return (0);
-	}
-	a = NULL;
-	b = NULL;
-	if (argc < 3)
-		spliting(argv + 1, &a, 1);
-	if (argc >= 3)
-		spliting(argv + 1, &a, 2);
-	array = sort_array(a);
-	sort(&a, &b, array, &data);
-	ps_lstclear(&a);
-	ps_lstclear(&b);
-	free(array);
-	return (0);
 }

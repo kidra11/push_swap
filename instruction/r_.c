@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:37:29 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/11 13:37:48 by nsion            ###   ########.fr       */
+/*   Updated: 2023/07/31 13:17:26 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ra(t_stack **a)
 {
 	t_stack		*tmp;
 
-	if (!a || !(*a)->nb)
+	if (!(*a) || !(*a)->next)
 		return ;
 	ps_lstadd_back(a, ps_lstnew((*a)->nb));
 	tmp = (*a);
@@ -29,7 +29,7 @@ void	rb(t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (!b || !(*b)->nb)
+	if (!(*b) || !(*b)->next)
 		return ;
 	ps_lstadd_back(b, ps_lstnew((*b)->nb));
 	tmp = (*b);

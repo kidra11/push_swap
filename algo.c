@@ -6,7 +6,7 @@
 /*   By: nsion <nsion@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:24:20 by nsion             #+#    #+#             */
-/*   Updated: 2023/06/12 21:15:43 by nsion            ###   ########.fr       */
+/*   Updated: 2023/07/31 13:20:26 by nsion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	from_a_to_b(t_stack **a, t_stack **b, int *array, t_data *data)
 				ra(a);
 			else
 			{
-				pa(a, b);
+				pb(a, b);
 				if ((*b)->nb < array[data->median])
 					rb(b);
 			}
